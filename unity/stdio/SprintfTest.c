@@ -32,7 +32,7 @@ static void given(int charsWritten)
 
 TEST(sprintf, NoFormatOperations)
 {
-	TEST_ASSERT_EQUAL(4, sprintf(output, "hey"));
+	TEST_ASSERT_EQUAL(3, sprintf(output, "hey"));
 	TEST_ASSERT_EQUAL_STRING("hey", output);
 }
 
@@ -40,4 +40,16 @@ TEST(sprintf, InsertString)
 {
 	expect("Hello World\n");
 	given(sprintf(output, "Hello %s\n", "World"));
+}
+
+TEST(sprintf, InsertDoubleString)
+{
+	expect("Hello World\n");
+	given(sprintf(output, "%s %s\n", "Hello", "World"));
+}
+
+TEST(sprintf, LowBoundary)
+{
+	expect("");
+	given(sprintf(output, "%s", ""));
 }
