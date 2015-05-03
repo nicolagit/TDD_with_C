@@ -19,6 +19,7 @@ UNITY_WARNINGFLAGS = -Wall -Werror -Wswitch-default
 #UNITY_WARNINGFLAGS += -Wshadow 
 
 SRC_DIRS = \
+	$(PROJECT_HOME_DIR)/src/LedDriver \
 
 TEST_SRC_DIRS = \
 	$(PROJECT_TEST_DIR)\
