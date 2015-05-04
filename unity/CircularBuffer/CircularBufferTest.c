@@ -13,11 +13,21 @@ TEST_TEAR_DOWN(CircularBuffer)
 
 TEST(CircularBuffer, BufferStartsWithPredefinedSize)
 {
-	TEST_FAIL_MESSAGE("BufferStartsWithPredefinedSize");
+	CircularBuffer* test_buffer = malloc(sizeof(CircularBuffer));
+	CreateBuffer(test_buffer, 6);
+	TEST_ASSERT_EQUAL(6, (sizeof(test_buffer->buffer) / sizeof(int16_t) ) );
+	free(test_buffer->buffer);
+	free(test_buffer);
 }
 TEST(CircularBuffer, BufferStartsEmpty)
 {
-	TEST_FAIL_MESSAGE("BufferStartsEmpty");
+	CircularBuffer* test_buffer = malloc(sizeof(CircularBuffer));
+	CreateBuffer(test_buffer, 3);
+	TEST_ASSERT_EQUAL(NULL, test_buffer->buffer[0]);
+	TEST_ASSERT_EQUAL(NULL, test_buffer->buffer[1]);
+	TEST_ASSERT_EQUAL(NULL, test_buffer->buffer[2]);
+	free(test_buffer->buffer);
+	free(test_buffer);
 }
 TEST(CircularBuffer, PointerWriteStartsInPosZero)
 {
